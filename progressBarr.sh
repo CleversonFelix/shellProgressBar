@@ -1,7 +1,8 @@
 #!/bin/bash
-
+trap "tput cnorm; exit" 0 2 3 15
 loading () 
 {
+	${1:?"Faltou a qtd de barras de progresso"}
 	# Cria array com numero passado
 	local isComplete=0
 	declare -a all_progress
@@ -52,7 +53,6 @@ loading ()
 				fi
 		done
 	done
-	tput cnorm
 }
 
 loading $1
